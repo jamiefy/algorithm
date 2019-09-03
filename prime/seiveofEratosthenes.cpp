@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <ctime>
 
 #define MAX_VALUE 2e7
 
@@ -13,6 +14,8 @@ void LinearSeive(std::vector<int> &primes,std::vector<int> &is_primes,int &size)
         }
         for(int j=0;j<count && i*primes[j]<MAX_VALUE;j++){
             is_primes[i*primes[j]]=1;
+//            if (i % primes[j] == 0)
+//                break;
         }
     }
     size=count;
@@ -29,6 +32,8 @@ int main() {
     int size=0;
     LinearSeive(primes,is_primes,size);
     while(count--){
+        clock_t t;
+        t = clock();
         int prime=-1;
         std::cin>>a;
         std::cin>>b;
@@ -49,7 +54,9 @@ int main() {
                 }
             }
         }
-        std::cout<<"case "<<case_number++<<" : "<<prime;
+        t=clock()-t;
+        std::cout<<"case "<<case_number++<<" : "<<prime<<std::endl;
+        std::cout<<"time : "<<(float)t/CLOCKS_PER_SEC;
     }
     return 0;
 }
