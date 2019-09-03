@@ -14,8 +14,8 @@ void LinearSeive(std::vector<int> &primes,std::vector<int> &is_primes,int &size)
         }
         for(int j=0;j<count && i*primes[j]<MAX_VALUE;j++){
             is_primes[i*primes[j]]=1;
-//            if (i % primes[j] == 0)
-//                break;
+            if (i % primes[j] == 0)
+                break;
         }
     }
     size=count;
